@@ -33,6 +33,7 @@ jobs:
             -p '${{ secrets.SITE_PASSWORD }}' \
             -d dist \
             --short \
+            --remember 30 \
             --template-title "Klarity" \
             --template-button "Accéder au site" \
             --template-placeholder "Mot de passe" \
