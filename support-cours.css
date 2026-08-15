@@ -1,0 +1,101 @@
+.detailed-lesson {
+  background: #fff;
+  border: 2px solid var(--ink);
+  border-radius: 14px;
+  padding: 28px;
+  margin: 8px 0 22px;
+  box-shadow: 0 12px 30px rgba(16, 43, 56, 0.07);
+}
+.support-heading {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 20px;
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 17px;
+  margin-bottom: 18px;
+}
+.support-heading span {
+  font-size: 9px;
+  letter-spacing: 0.14em;
+  font-weight: 800;
+  color: var(--coral);
+}
+.support-heading h4 {
+  font: 800 24px/1.25 Manrope !important;
+  margin: 6px 0 0 !important;
+}
+.support-lead {
+  font-size: 14px !important;
+  line-height: 1.7 !important;
+  color: var(--muted) !important;
+  font-style: italic;
+}
+.detailed-lesson h5 {
+  font: 700 17px Manrope;
+  margin: 27px 0 8px;
+  color: var(--ink);
+}
+.detailed-lesson p {
+  font-size: 15px;
+  line-height: 1.9;
+  color: #3f555e;
+}
+.print-course {
+  white-space: nowrap;
+  border: 1px solid var(--line);
+  background: var(--paper);
+  border-radius: 7px;
+  padding: 10px 12px;
+  font-weight: 700;
+  color: var(--ink);
+  cursor: pointer;
+}
+@media (max-width: 600px) {
+  .detailed-lesson {
+    padding: 20px 17px;
+  }
+  .support-heading {
+    flex-direction: column;
+  }
+  .print-course {
+    width: 100%;
+  }
+}
+@media print {
+  body * {
+    visibility: hidden;
+  }
+  .chapter.printing,
+  .chapter.printing * {
+    visibility: visible;
+  }
+  .chapter.printing {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    border: 0;
+  }
+  .chapter.printing .chapter-header,
+  .chapter.printing .audience-banner,
+  .chapter.printing .simple-explanation,
+  .chapter.printing .objectives,
+  .chapter.printing .deep-course,
+  .chapter.printing .course-block:not(.detailed-lesson),
+  .chapter.printing .activity-tabs,
+  .chapter.printing .activity-panel,
+  .chapter.printing .chapter-status,
+  .chapter.printing .print-course {
+    display: none;
+  }
+  .chapter.printing .detailed-lesson {
+    display: block !important;
+    border: 0;
+    box-shadow: none;
+  }
+  .subject-sidebar,
+  .nav-wrap,
+  .subject-hero {
+    display: none !important;
+  }
+}

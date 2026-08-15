@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Nexus Études — cours, méthodes et entraînements en CEJM et STMG." />
+    <title>Nexus Études — Réussir en BTS & STMG</title>
+    <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+      a.course-card {
+        text-decoration: none;
+        color: var(--ink);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="grain" aria-hidden="true"></div>
+    <header class="nav-wrap">
+      <nav class="nav container" aria-label="Navigation principale">
+        <a class="brand" href="#accueil" aria-label="Nexus Études, accueil"
+          ><span class="brand-mark">N</span><span>Nexus <em>Études</em></span></a
+        >
+        <div class="nav-links">
+          <a href="cejm.html">CEJM</a><a href="droit.html">Droit</a><a href="economie.html">Économie</a
+          ><a href="sgn.html">SGN</a>
+        </div>
+        <button class="progress-pill" id="progressButton">
+          <span class="pulse"></span><span id="navProgress">0 % maîtrisé</span>
+        </button>
+        <button class="menu-button" id="menuButton" aria-label="Ouvrir le menu">☰</button>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero container" id="accueil">
+        <div class="hero-copy">
+          <div class="eyebrow"><span>●</span> Plateforme pédagogique · BTS & STMG</div>
+          <h1>Comprendre.<br /><span>Pratiquer.</span> Réussir.</h1>
+          <p>
+            Des notions rendues claires, des méthodes qui structurent la pensée et des entraînements conçus pour
+            transformer vos connaissances en points le jour de l’épreuve.
+          </p>
+          <div class="hero-actions">
+            <a class="button primary" href="#parcours">Explorer les parcours <span>→</span></a>
+            <a class="button ghost" href="cejm.html"><span class="play">▶</span> Ouvrir les cours détaillés</a>
+          </div>
+          <div class="hero-proof">
+            <div class="avatars"><span>AM</span><span>CL</span><span>YN</span></div>
+            <p><strong>Aligné sur les référentiels officiels</strong><br />BTS CEJM · STMG Droit, Économie & SGN</p>
+          </div>
+        </div>
+        <div class="hero-dashboard">
+          <div class="dashboard-top"><span>MON ESPACE</span><span class="live-dot">● À JOUR</span></div>
+          <div class="welcome">
+            <div>
+              <small>BONJOUR 👋</small>
+              <h2>Prêt à progresser ?</h2>
+            </div>
+            <div class="level-ring"><strong id="heroScore">0</strong><small>XP</small></div>
+          </div>
+          <div class="continue-card">
+            <div class="course-icon amber">⚖</div>
+            <div>
+              <small>À CONTINUER</small><strong>Le raisonnement juridique</strong><span>Mission 1 · Méthode</span>
+            </div>
+            <button onclick="location.href = 'droit.html'" aria-label="Continuer vers le cours de droit">→</button>
+          </div>
+          <div class="week-head"><strong>Cette semaine</strong><span id="weekCount">0 / 3 objectifs</span></div>
+          <div class="week-grid">
+            <div><b id="lessonsStat">0</b><span>notions vues</span></div>
+            <div><b id="quizStat">0%</b><span>quiz réussis</span></div>
+            <div><b id="streakStat">1</b><span>jour de série</span></div>
+          </div>
+          <div class="mini-goal">
+            <span>Objectif examen</span><strong>Maîtriser la méthode CEJM</strong>
+            <div class="progress-line"><i id="goalBar"></i></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="trust-strip">
+        <div class="container">
+          <span>UN PARCOURS CONÇU POUR</span>
+          <div>La compréhension <b>→</b> La mémorisation <b>→</b> L'application <b>→</b> La maîtrise</div>
+        </div>
+      </section>
+
+      <section class="section container" id="parcours">
+        <div class="section-heading reveal">
+          <div>
+            <div class="eyebrow coral">PARCOURS D'APPRENTISSAGE</div>
+            <h2>Choisissez votre voie</h2>
+          </div>
+          <p>
+            Chaque chapitre relie les notions du programme à des situations concrètes, puis vous entraîne avec un
+            feedback immédiat.
+          </p>
+        </div>
+        <div class="filters" role="tablist">
+          <button class="active" data-filter="all">Tous les parcours</button
+          ><button data-filter="bts">BTS · CEJM</button><button data-filter="stmg">STMG</button>
+        </div>
+        <div class="course-grid" id="courseGrid"></div>
+      </section>
+
+      <section class="method-section" id="methode">
+        <div class="container method-grid">
+          <div class="method-copy reveal">
+            <div class="eyebrow light">LA MÉTHODE NEXUS</div>
+            <h2>Apprendre moins au hasard.<br />Retenir <span>beaucoup plus.</span></h2>
+            <p>
+              Une boucle courte inspirée des sciences cognitives : activer, comprendre, récupérer, appliquer. Vous ne
+              relisez pas passivement — vous produisez une réponse.
+            </p>
+            <a href="#parcours" class="text-link">Commencer un cycle <span>↗</span></a>
+          </div>
+          <div class="steps reveal delay">
+            <article>
+              <b>01</b>
+              <div>
+                <span>ACTIVER</span>
+                <h3>Partir d’une situation</h3>
+                <p>Une question concrète révèle ce que vous savez déjà.</p>
+              </div>
+            </article>
+            <article>
+              <b>02</b>
+              <div>
+                <span>COMPRENDRE</span>
+                <h3>Construire le concept</h3>
+                <p>Définition, mécanisme, exemple et contre-exemple.</p>
+              </div>
+            </article>
+            <article>
+              <b>03</b>
+              <div>
+                <span>RÉCUPÉRER</span>
+                <h3>Se tester sans support</h3>
+                <p>Quiz, flashcards et explication avec vos mots.</p>
+              </div>
+            </article>
+            <article>
+              <b>04</b>
+              <div>
+                <span>TRANSFÉRER</span>
+                <h3>Résoudre un cas</h3>
+                <p>Une situation nouvelle, chronométrée et corrigée.</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section exam container" id="sujet">
+        <div class="exam-card reveal">
+          <div class="exam-intro">
+            <div class="eyebrow coral">ÉPREUVE GRANDEUR NATURE</div>
+            <h2>CEJM 2026<br /><span>La Savonnerie du Paradou</span></h2>
+            <p>
+              Un sujet complet découpé en 3 missions. Analysez les documents, formulez votre réponse puis comparez-la au
+              corrigé détaillé.
+            </p>
+            <div class="exam-meta"><span>⏱ 4 heures</span><span>◫ 9 questions</span><span>◎ BTS</span></div>
+            <button class="button primary" id="startExam">Lancer l'entraînement <span>→</span></button>
+          </div>
+          <div class="mission-list">
+            <article>
+              <span>MISSION 01</span>
+              <h3>Activité & ressources</h3>
+              <p>Diagnostic interne, facteurs de production et entente.</p>
+              <b>3 questions · 45 min</b>
+            </article>
+            <article>
+              <span>MISSION 02</span>
+              <h3>Cap sur l’international</h3>
+              <p>Croissance, risques économiques et statut juridique.</p>
+              <b>3 questions · 50 min</b>
+            </article>
+            <article>
+              <span>MISSION 03</span>
+              <h3>Modernisation</h3>
+              <p>Politique publique, compétences et responsabilité.</p>
+              <b>3 questions · 55 min</b>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="cta">
+        <div class="container">
+          <div>
+            <span>VOTRE PROCHAINE ÉTAPE</span>
+            <h2>La maîtrise commence<br />par une première notion.</h2>
+          </div>
+          <a href="#parcours" class="button ivory">Choisir mon parcours <span>→</span></a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="container">
+      <a class="brand" href="#accueil"
+        ><span class="brand-mark">N</span><span>Nexus <em>Études</em></span></a
+      >
+      <p>Apprendre avec méthode. Réussir avec confiance.</p>
+      <span>© 2026 · Ressource pédagogique indépendante</span>
+    </footer>
+
+    <div class="modal" id="courseModal" aria-hidden="true">
+      <div class="modal-backdrop" data-close></div>
+      <div class="modal-panel" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+        <button class="modal-close" data-close aria-label="Fermer">×</button>
+        <div id="courseContent"></div>
+      </div>
+    </div>
+    <div class="toast" id="toast" role="status"></div>
+    <script src="app.js"></script>
+  </body>
+</html>

@@ -1,0 +1,7 @@
+.DS_Store
+.idea/
+graphify-out/
+node_modules/
+*.log
+dist/
+.staticrypt.json

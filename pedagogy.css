@@ -1,0 +1,175 @@
+.learning-path {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+  margin: 0 0 28px;
+}
+.learning-path div {
+  background: var(--navy);
+  color: white;
+  border-radius: 9px;
+  padding: 13px;
+}
+.learning-path b {
+  display: block;
+  color: var(--amber);
+  font: 800 15px Manrope;
+}
+.learning-path span {
+  font-size: 9px;
+  color: #b9c7ca;
+}
+.diagnostic {
+  border: 1px dashed #b9c7c3;
+  border-radius: 10px;
+  padding: 18px 20px;
+  margin-bottom: 22px;
+}
+.diagnostic h4 {
+  font: 700 16px Manrope;
+  margin: 5px 0;
+}
+.diagnostic p {
+  font-size: 13px;
+  line-height: 1.65;
+  color: var(--muted);
+}
+.deep-course {
+  border-top: 1px solid var(--line);
+  margin-top: 28px;
+}
+.mechanism {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 9px;
+  margin: 16px 0;
+}
+.mechanism div {
+  background: #f1f4f0;
+  border-radius: 9px;
+  padding: 17px;
+}
+.mechanism b {
+  display: block;
+  font-size: 11px;
+  color: var(--coral);
+  margin-bottom: 6px;
+}
+.mechanism span {
+  font-size: 11px;
+  line-height: 1.5;
+  color: #53656d;
+}
+.distinction {
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  margin: 16px 0;
+}
+.distinction-head,
+.distinction-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.distinction-head {
+  background: var(--navy);
+  color: white;
+}
+.distinction-head b,
+.distinction-row div {
+  padding: 12px 16px;
+}
+.distinction-head b {
+  font-size: 10px;
+}
+.distinction-row div {
+  font-size: 12px;
+  line-height: 1.5;
+  color: #52646b;
+}
+.method-sheet {
+  background: #e4ece7;
+  border-radius: 11px;
+  padding: 21px;
+  margin: 22px 0;
+}
+.method-sheet h4,
+.mistakes h4 {
+  font: 700 17px Manrope;
+  margin: 5px 0 12px;
+}
+.method-sheet li,
+.mistakes li {
+  font-size: 13px;
+  line-height: 1.7;
+}
+.mistakes {
+  border-radius: 10px;
+  background: #fff0ed;
+  padding: 20px;
+}
+.training-levels {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin: 22px 0;
+}
+.training-card {
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 17px;
+}
+.training-card small {
+  font-size: 8px;
+  letter-spacing: 0.12em;
+  font-weight: 800;
+  color: var(--coral);
+}
+.training-card h5 {
+  font: 700 14px Manrope;
+  margin: 7px 0;
+}
+.training-card p {
+  font-size: 11px;
+  line-height: 1.55;
+  color: var(--muted);
+}
+.training-card summary {
+  cursor: pointer;
+  color: var(--coral);
+  font-weight: 700;
+}
+.mastery-check {
+  background: var(--navy);
+  color: white;
+  border-radius: 10px;
+  padding: 20px;
+  margin-top: 22px;
+}
+.mastery-check h4 {
+  margin: 0 0 10px;
+}
+.mastery-check label {
+  display: block;
+  font-size: 12px;
+  color: #c2ced1;
+  margin: 8px 0;
+}
+.mastery-check input {
+  accent-color: var(--coral);
+  margin-right: 8px;
+}
+@media (max-width: 700px) {
+  .learning-path,
+  .mechanism,
+  .training-levels {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+@media (max-width: 480px) {
+  .learning-path,
+  .mechanism,
+  .training-levels {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="description" content="Cours de Sciences de gestion et numérique STMG — 4 thèmes, organisations, performance, quiz et études de cas." />
+    <title>SGN — Nexus Études</title>
+    <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="discipline.css" />
+  </head>
+  <body class="subject-body" data-subject="sgn">
+    <header class="nav-wrap">
+      <nav class="nav container" aria-label="Navigation principale">
+        <a class="brand" href="index.html"
+          ><span class="brand-mark">N</span><span>Nexus <em>Études</em></span></a
+        >
+        <div class="nav-links">
+          <a href="cejm.html">CEJM</a><a href="droit.html">Droit</a><a href="economie.html">Économie</a
+          ><a href="sgn.html">SGN</a>
+        </div>
+        <a class="progress-pill" href="index.html#parcours">Tous les parcours →</a>
+        <button class="menu-button" id="menuButton" aria-label="Ouvrir le menu">☰</button>
+      </nav>
+    </header>
+    <div class="grain" aria-hidden="true"></div>
+    <main>
+      <section class="subject-hero">
+        <div class="container">
+          <div class="breadcrumbs"><a href="index.html">Accueil</a> / STMG</div>
+          <div class="subject-hero-grid">
+            <div>
+              <div class="subject-kicker" id="subjectLabel"></div>
+              <h1 id="subjectTitle"></h1>
+              <p id="subjectIntro"></p>
+            </div>
+            <div class="subject-stats">
+              <div><b id="themeCount"></b><span>THÈMES</span></div>
+              <div><b>1</b><span>ANNÉE</span></div>
+              <div><b>4</b><span>CAS COMPLETS</span></div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <div class="subject-layout container">
+        <aside class="subject-sidebar">
+          <span>PROGRAMME OFFICIEL</span>
+          <nav class="chapter-nav" id="chapterNav"></nav>
+          <div class="sidebar-box">
+            <strong>Réflexe gestion</strong>Observer l’organisation, sélectionner des indicateurs et interpréter sans se
+            limiter au calcul.
+          </div>
+        </aside>
+        <section>
+          <div class="content-intro">
+            <h2>Les chapitres</h2>
+            <p>Sciences de gestion et numérique</p>
+          </div>
+          <div id="chapters"></div>
+        </section>
+      </div>
+    </main>
+    <footer class="container" style="height:120px;display:flex;align-items:center;justify-content:space-between;font-size:11px;color:var(--muted)">
+      <span>Nexus Études — Ressource pédagogique</span>
+      <a href="index.html" style="color:var(--muted);text-decoration:none">Retour à l'accueil</a>
+    </footer>
+    <button class="back-to-top" id="backToTop" aria-label="Retour en haut">↑</button>
+    <script src="discipline.js"></script>
+  </body>
+</html>
