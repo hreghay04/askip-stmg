@@ -33,7 +33,7 @@ jobs:
             -p '${{ secrets.SITE_PASSWORD }}' \
             -d dist \
             --short \
-            --template-title "Nexus Études" \
+            --template-title "Klarity" \
             --template-button "Accéder au site" \
             --template-placeholder "Mot de passe" \
             --template-instructions "Entrez le mot de passe fourni par votre enseignant." \
