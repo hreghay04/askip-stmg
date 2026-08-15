@@ -34,7 +34,7 @@ jobs:
             -d dist \
             --short \
             --remember 30 \
-            --template-title "Klarity" \
+            --template-title "EcoGest'Lab" \
             --template-button "Accéder au site" \
             --template-placeholder "Mot de passe" \
             --template-instructions "Entrez le mot de passe fourni par votre enseignant." \

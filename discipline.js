@@ -681,7 +681,7 @@ const exams = {
 const key = document.body.dataset.subject,
   program = programs[key];
 const slug = (i) => `chapitre-${i + 1}`;
-document.title = `${program.short} — Klarity`;
+document.title = `${program.short} — EcoGest'Lab`;
 document
   .querySelectorAll('#subjectLabel')
   .forEach((element) => (element.textContent = program.label));
