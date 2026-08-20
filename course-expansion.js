@@ -238,6 +238,129 @@ Object.assign(definitionBank, {
     'Services numériques permettant de créer un profil, publier et interagir au sein d’un réseau.',
   'Traces numériques':
     'Informations laissées volontairement ou automatiquement par les usages d’outils et services numériques.',
+  'Circuit économique':
+    'Représentation schématique des flux réels et monétaires entre les agents économiques.',
+  'Asymétrie d’information':
+    'Situation où l’une des parties à un échange dispose de plus d’informations que l’autre, pouvant fausser les décisions.',
+  RSE: 'Responsabilité sociétale de l’entreprise : intégration volontaire de préoccupations sociales et environnementales au-delà des obligations légales.',
+  'Politique budgétaire':
+    'Action du gouvernement sur les recettes et les dépenses publiques pour influencer la demande et la croissance.',
+  'Politique monétaire':
+    'Action de la banque centrale sur les taux d’intérêt et la masse monétaire pour stabiliser les prix et soutenir l’activité.',
+  'Abus de position dominante':
+    'Exploitation abusive par une entreprise de sa puissance sur le marché, sanctionnée par le droit de la concurrence.',
+  'Propriété industrielle':
+    'Ensemble des droits protégeant les inventions (brevets), les marques, les dessins et les modèles.',
+  'Combinaison productive':
+    'Dosage entre travail et capital choisi par l’entreprise pour produire, qui dépend des coûts relatifs et de la technologie.',
+  Autofinancement:
+    'Financement des investissements par les bénéfices non distribués de l’entreprise.',
+  'Économie de la donnée':
+    'Activités économiques fondées sur la collecte, le traitement et la valorisation des données numériques.',
+  Dématérialisation:
+    'Remplacement de supports physiques par des formats numériques pour les documents, les procédures et les échanges.',
+  'Dialogue social':
+    'Ensemble des négociations et consultations entre employeurs et représentants des salariés.',
+  'Avantage concurrentiel':
+    'Atout qui permet à une entreprise de surpasser ses concurrents de manière durable.',
+  'Domination par les coûts':
+    'Stratégie visant à proposer des prix inférieurs aux concurrents grâce à des coûts de production plus bas.',
+  Différenciation:
+    'Stratégie consistant à proposer une offre unique perçue comme supérieure par les clients.',
+  'Alliance stratégique':
+    'Accord de coopération entre entreprises indépendantes pour partager ressources et risques.',
+  'État de droit':
+    'Principe selon lequel tous, citoyens et pouvoirs publics, sont soumis aux mêmes règles juridiques.',
+  Laïcité:
+    'Principe de séparation des institutions publiques et des organisations religieuses, garantissant la liberté de conscience.',
+  QPC: 'Question prioritaire de constitutionnalité : procédure permettant à tout justiciable de contester la conformité d’une loi à la Constitution.',
+  'Ordre public':
+    'Ensemble des règles auxquelles les individus ne peuvent déroger par convention privée.',
+  'Acte juridique':
+    'Manifestation de volonté destinée à produire des effets de droit, comme un contrat ou un testament.',
+  'Fait juridique':
+    'Événement qui produit des effets de droit sans que ceux-ci aient été voulus, comme un accident.',
+  'Preuve électronique':
+    'Mode de preuve utilisant des supports numériques (électroniqu, courriels) à condition de garantir intégrité et identification.',
+  Médiation:
+    'Mode alternatif de règlement des litiges faisant intervenir un tiers impartial pour aider les parties à trouver un accord.',
+  Arbitrage:
+    'Mode de résolution des litiges confiant la décision à un ou plusieurs arbitres choisis par les parties.',
+  'Identité numérique':
+    'Ensemble des données et traces laissées par une personne sur internet, contribuant à son image en ligne.',
+  'Trouble anormal de voisinage':
+    'Préjudice excédant les inconvénients normaux du voisinage, engageant la responsabilité même sans faute.',
+  'Biens corporels':
+    'Biens ayant une existence matérielle : immeubles, véhicules, marchandises.',
+  'Biens incorporels':
+    'Biens sans matérialité : créances, brevets, fonds de commerce, droits d’auteur.',
+  'Clause abusive':
+    'Clause contractuelle créant un déséquilibre significatif au détriment du consommateur, réputée non écrite.',
+  'Droit de rétractation':
+    'Droit du consommateur de renoncer à un contrat conclu à distance dans un délai de 14 jours.',
+  'Préjudice écologique':
+    'Atteinte aux éléments ou aux fonctions des écosystèmes, réparable en nature ou en espèces.',
+  'Produits défectueux':
+    'Régime de responsabilité permettant d’obtenir réparation du producteur sans prouver une faute, si le produit présente un défaut.',
+  'Rupture conventionnelle':
+    'Mode de rupture du CDI résultant d’un accord mutuel entre employeur et salarié, homologué par l’administration.',
+  CSE: 'Comité social et économique : instance représentative des salariés assurant expression collective et consultation.',
+  'Contrat de société':
+    'Accord par lequel deux ou plusieurs personnes conviennent d’affecter des biens à une activité commune en vue de partager les bénéfices.',
+  'Affectio societatis':
+    'Volonté commune des associés de collaborer activement, sur un pied d’égalité, dans l’intérêt de la société.',
+  SCOP: 'Société coopérative et participative où les salariés sont associés majoritaires et disposent chacun d’une voix.',
+  Franchise:
+    'Contrat par lequel un franchiseur met à disposition sa marque et son savoir-faire contre une redevance.',
+  'Procédures collectives':
+    'Procédures judiciaires (sauvegarde, redressement, liquidation) visant à traiter les difficultés financières d’une entreprise.',
+  'Utilité marginale':
+    'Supplément de satisfaction procuré par la consommation d’une unité supplémentaire d’un bien.',
+  'Fonctions de la monnaie':
+    'Unité de compte, intermédiaire des échanges et réserve de valeur.',
+  'Consommations intermédiaires':
+    'Biens et services consommés et transformés au cours du processus de production.',
+  IPC: 'Indice des prix à la consommation : mesure l’évolution du niveau général des prix pour évaluer le pouvoir d’achat.',
+  'Création monétaire':
+    'Processus par lequel les banques commerciales créent de la monnaie en accordant des crédits.',
+  'Bien public':
+    'Bien non rival (sa consommation par l’un ne réduit pas celle des autres) et non excluable (on ne peut empêcher quiconque d’en bénéficier).',
+  'Chômage conjoncturel':
+    'Chômage résultant d’un ralentissement temporaire de l’activité économique.',
+  'Chômage structurel':
+    'Chômage persistant même en période de croissance, lié à des inadéquations entre offre et demande de travail.',
+  'Firmes multinationales':
+    'Entreprises qui exercent des activités de production dans plusieurs pays via des filiales.',
+  'Chaînes de valeur mondiales':
+    'Décomposition de la production d’un bien en étapes réparties entre plusieurs pays.',
+  IDH: 'Indice de développement humain : combine espérance de vie, niveau d’éducation et revenu par habitant.',
+  'Économie circulaire':
+    'Modèle visant à réduire déchets et consommation de ressources par le réemploi, la réparation et le recyclage.',
+  'Taxe carbone':
+    'Taxe sur les émissions de CO₂ visant à internaliser le coût environnemental de la pollution.',
+  PGI: 'Progiciel de gestion intégré centralisant les données de toutes les fonctions dans une base unique.',
+  'Cloud computing':
+    'Accès à des ressources informatiques (stockage, logiciels) via internet sans les posséder physiquement.',
+  'E-réputation':
+    'Image d’une organisation perçue sur internet à travers les avis, réseaux sociaux et articles en ligne.',
+  'Seuil de rentabilité':
+    'Niveau de chiffre d’affaires à partir duquel l’entreprise couvre toutes ses charges et commence à dégager un bénéfice.',
+  'Charges directes':
+    'Charges affectables sans ambiguïté à un produit ou une activité précise.',
+  'Charges indirectes':
+    'Charges partagées entre plusieurs activités, nécessitant une clé de répartition pour être imputées.',
+  'Tableau de bord':
+    'Outil de pilotage regroupant des indicateurs clés présentés de manière synthétique pour faciliter la prise de décision.',
+  'Matrice de risques':
+    'Outil croisant probabilité et gravité pour hiérarchiser les risques et concentrer les efforts sur les plus critiques.',
+  'Diagramme de Gantt':
+    'Représentation graphique des tâches d’un projet sur un axe temporel, montrant durées, chevauchements et dépendances.',
+  Ordonnancement:
+    'Organisation des tâches dans le temps en tenant compte des contraintes d’antériorité et des ressources disponibles.',
+  'Big data':
+    'Masses considérables de données numériques dont le traitement nécessite des outils et méthodes spécifiques.',
+  Leadership:
+    'Capacité à orienter, mobiliser et influencer un groupe vers la réalisation d’objectifs communs.',
 });
 const disciplineOverrides = {
   sgn: {
