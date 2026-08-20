@@ -34,6 +34,7 @@ jobs:
             -d dist \
             --short \
             --remember 30 \
+            --salt '6563-6f67-6573-746c' \
             --template-title "EcoGest'Lab" \
             --template-button "Accéder au site" \
             --template-placeholder "Mot de passe" \
