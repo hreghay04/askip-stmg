@@ -1,5 +1,5 @@
 .subject-body {
-  background: #f5f2eb;
+  background: var(--paper);
 }
 .subject-hero {
   background: var(--navy);
@@ -151,7 +151,7 @@
 }
 .chapter {
   background: #fff;
-  border: 1px solid rgba(19, 43, 56, 0.08);
+  border: 1px solid var(--line);
   border-radius: 15px;
   margin-bottom: 16px;
   overflow: hidden;
@@ -304,7 +304,7 @@
 }
 .activity-tabs button {
   border: 1px solid var(--line);
-  background: #f7f7f3;
+  background: #f0f5fa;
   padding: 10px 14px;
   border-radius: 7px;
   font-weight: 700;
@@ -316,7 +316,7 @@
 }
 .activity-panel {
   display: none;
-  background: #f5f6f2;
+  background: #f0f5fa;
   border-radius: 10px;
   padding: 22px;
 }
@@ -476,7 +476,7 @@
   margin-bottom: 60px;
 }
 .exam-blanc-card {
-  background: var(--navy, #132b38);
+  background: var(--navy, #24304f);
   border-radius: 18px;
   padding: 50px;
   display: grid;
@@ -555,13 +555,13 @@
 }
 .exam-blanc-mission {
   background: #fff;
-  border: 1px solid rgba(19, 43, 56, 0.08);
+  border: 1px solid var(--line);
   border-radius: 15px;
   margin-bottom: 20px;
   overflow: hidden;
 }
 .exam-mission-header {
-  background: var(--navy, #132b38);
+  background: var(--navy, #24304f);
   color: #fff;
   padding: 20px 28px;
 }
@@ -585,11 +585,11 @@
 .exam-blanc-question h4 {
   font: 700 16px Manrope;
   margin: 0 0 16px;
-  color: var(--ink, #132b38);
+  color: var(--ink, #24304f);
 }
 .exam-situation,
 .exam-consigne {
-  background: #f7f7f3;
+  background: #f0f5fa;
   border-radius: 9px;
   padding: 16px 18px;
   margin-bottom: 14px;
@@ -652,7 +652,7 @@
   margin: 28px 0;
   padding: 24px;
   background: linear-gradient(135deg, #f8f9fa 0%, #f2f5f2 100%);
-  border: 1px solid rgba(19, 43, 56, 0.08);
+  border: 1px solid var(--line);
   border-radius: 14px;
   overflow-x: auto;
 }
@@ -774,4 +774,216 @@
     color: #000 !important;
     text-decoration: none !important;
   }
+}
+
+/* === 5-STEP CHAPTER ARCHITECTURE === */
+
+/* Goal selector */
+.goal-selector {
+  padding: 30px;
+}
+.goal-selector h4 {
+  font: 700 20px Manrope;
+  margin: 0 0 18px;
+  text-align: center;
+}
+.goal-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+.goal-btn {
+  border: 1.5px solid var(--line);
+  background: var(--white);
+  border-radius: 12px;
+  padding: 22px 16px;
+  text-align: center;
+  cursor: pointer;
+  transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+}
+.goal-btn:hover {
+  border-color: var(--coral);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(36, 48, 79, 0.08);
+}
+.goal-icon {
+  display: block;
+  font-size: 22px;
+  margin-bottom: 10px;
+  color: var(--coral);
+  font-weight: 800;
+  font-family: Manrope, sans-serif;
+}
+.goal-btn strong {
+  display: block;
+  font: 700 14px Manrope;
+  margin-bottom: 4px;
+}
+.goal-btn p {
+  font-size: 11px;
+  color: var(--muted);
+  margin: 0;
+}
+
+/* Step navigation */
+.step-nav {
+  display: flex;
+  gap: 4px;
+  padding: 0 30px 14px;
+  border-bottom: 1px solid var(--line);
+  overflow-x: auto;
+}
+.step-tab {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  border: 1.5px solid var(--line);
+  background: transparent;
+  border-radius: 8px;
+  padding: 9px 14px;
+  font: 600 12px 'DM Sans', sans-serif;
+  color: var(--muted);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.2s, color 0.2s, border-color 0.2s;
+}
+.step-tab:hover { border-color: var(--ink); color: var(--ink); }
+.step-tab.active {
+  background: var(--ink);
+  color: var(--white);
+  border-color: var(--ink);
+}
+.step-tab.step-done {
+  border-color: var(--sage);
+}
+.step-tab.step-done::after {
+  content: '✓';
+  color: var(--sage);
+  font-weight: 800;
+  font-size: 11px;
+}
+.step-tab.active.step-done::after { color: var(--white); }
+.step-num {
+  width: 20px;
+  height: 20px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: rgba(36, 48, 79, 0.08);
+  font: 700 10px Manrope;
+  color: var(--ink);
+}
+.step-tab.active .step-num {
+  background: rgba(255, 255, 255, 0.2);
+  color: var(--white);
+}
+
+/* Step panels */
+.step-panel {
+  display: none;
+  padding: 0 30px 30px;
+}
+.step-panel.active { display: block; }
+.step-header {
+  padding: 22px 0 18px;
+  border-bottom: 1px solid var(--line);
+  margin-bottom: 22px;
+}
+.step-badge {
+  font-size: 9px;
+  letter-spacing: 0.14em;
+  font-weight: 800;
+  color: var(--coral);
+}
+.step-header h4 {
+  font: 800 22px Manrope;
+  margin: 6px 0 0;
+}
+.step-body {}
+.step-next {
+  display: block;
+  width: 100%;
+  margin-top: 24px;
+  padding: 14px;
+  border: 0;
+  border-radius: 9px;
+  background: var(--ink);
+  color: var(--white);
+  font: 700 14px 'DM Sans', sans-serif;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.step-next:hover { background: var(--coral); }
+
+/* Progress ring in header */
+.chapter-pct {
+  position: relative;
+  width: 38px;
+  height: 38px;
+  flex-shrink: 0;
+}
+.chapter-pct svg { display: block; }
+.chapter-pct span {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  font: 700 9px Manrope;
+  color: var(--ink);
+}
+.pct-arc { transition: stroke-dashoffset 0.5s ease; }
+
+/* Sidebar progress */
+.nav-pct {
+  font: 700 10px Manrope;
+  color: var(--coral);
+  margin-left: auto;
+}
+.chapter-nav a {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Collapsible details within steps */
+.step-body details {
+  border: 1px solid var(--line);
+  border-radius: 9px;
+  margin: 10px 0;
+  overflow: hidden;
+}
+.step-body details summary {
+  padding: 12px 16px;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 13px;
+  color: var(--ink);
+  background: rgba(36, 48, 79, 0.03);
+}
+.step-body details[open] summary { border-bottom: 1px solid var(--line); }
+.step-body details > :not(summary) { padding: 14px 16px; }
+
+/* Case documents */
+.case-documents {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  gap: 10px;
+}
+.case-documents li {
+  background: rgba(36, 48, 79, 0.03);
+  border-radius: 9px;
+  padding: 16px;
+}
+.case-documents li strong { display: block; margin-bottom: 6px; font-size: 13px; }
+.case-documents li p { margin: 0; font-size: 12px; color: var(--muted); line-height: 1.6; }
+
+@media (max-width: 700px) {
+  .goal-grid { grid-template-columns: 1fr 1fr; }
+  .step-nav { padding: 0 16px 10px; }
+  .step-panel { padding: 0 16px 20px; }
+  .goal-selector { padding: 20px 16px; }
+}
+@media (max-width: 480px) {
+  .goal-grid { grid-template-columns: 1fr; }
 }

@@ -1,14 +1,16 @@
 :root {
-  --ink: #132b38;
-  --navy: #102b38;
-  --paper: #f6f3ec;
+  --ink: #24304f;
+  --navy: #24304f;
+  --paper: #f6fbff;
   --white: #fff;
-  --coral: #ef6a5b;
-  --amber: #e8b74f;
-  --sage: #87a99b;
+  --coral: #ff7469;
+  --amber: #ffc94a;
+  --sage: #62d6b2;
+  --sky: #5bb8f0;
+  --violet: #806cf5;
   --muted: #65747b;
-  --line: #dfe2dc;
-  --shadow: 0 24px 70px rgba(16, 43, 56, 0.12);
+  --line: rgba(36, 48, 79, 0.12);
+  --shadow: 0 24px 70px rgba(36, 48, 79, 0.1);
 }
 * {
   box-sizing: border-box;
@@ -39,8 +41,8 @@ body {
   position: sticky;
   top: 0;
   z-index: 20;
-  background: rgba(246, 243, 236, 0.88);
-  border-bottom: 1px solid rgba(19, 43, 56, 0.08);
+  background: rgba(246, 251, 255, 0.88);
+  border-bottom: 1px solid var(--line);
   backdrop-filter: blur(18px);
 }
 .nav {
@@ -226,7 +228,7 @@ body {
   content: '';
   position: absolute;
   inset: -14px -14px -14px -14px;
-  border: 1px solid rgba(19, 43, 56, 0.09);
+  border: 1px solid var(--line);
   border-radius: 26px;
   z-index: -1;
 }
@@ -372,7 +374,7 @@ body {
   transition: 0.5s;
 }
 .trust-strip {
-  border-block: 1px solid rgba(19, 43, 56, 0.09);
+  border-block: 1px solid var(--line);
   padding: 20px 0;
   background: rgba(255, 255, 255, 0.35);
 }
@@ -438,7 +440,7 @@ body {
 }
 .course-card {
   background: white;
-  border: 1px solid rgba(19, 43, 56, 0.08);
+  border: 1px solid var(--line);
   border-radius: 15px;
   padding: 24px;
   min-height: 300px;

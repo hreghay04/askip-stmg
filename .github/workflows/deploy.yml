@@ -40,8 +40,8 @@ jobs:
             --template-instructions "Entrez le mot de passe fourni par votre enseignant." \
             --template-error "Mot de passe incorrect." \
             --template-remember "Se souvenir de moi" \
-            --template-color-primary "#132b38" \
-            --template-color-secondary "#f0ece6"
+            --template-color-primary "#24304f" \
+            --template-color-secondary "#f6fbff"
 
       - name: Copy static assets
         run: |
