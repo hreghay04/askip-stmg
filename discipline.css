@@ -250,6 +250,79 @@
 .objectives.savoirs strong {
   color: #4a6091;
 }
+.savoirs-section {
+  margin-bottom: 25px;
+}
+.savoirs-section > strong {
+  display: block;
+  font-size: 9px;
+  letter-spacing: 0.13em;
+  color: #4a6091;
+  margin-bottom: 12px;
+}
+.savoir-card {
+  border: 1px solid #dde3ed;
+  border-radius: 8px;
+  margin-bottom: 8px;
+  background: #f8f9fc;
+  overflow: hidden;
+  transition: box-shadow 0.2s;
+}
+.savoir-card:hover {
+  box-shadow: 0 2px 8px rgba(74,96,145,0.1);
+}
+.savoir-title {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  padding: 12px 16px;
+  font-size: 13.5px;
+  font-weight: 600;
+  color: #2d3a4e;
+  cursor: pointer;
+  user-select: none;
+  line-height: 1.5;
+}
+.savoir-title.no-content {
+  cursor: default;
+  color: #52646b;
+  font-weight: 500;
+}
+.savoir-chevron {
+  flex-shrink: 0;
+  font-size: 11px;
+  color: #4a6091;
+  transition: transform 0.25s;
+  display: inline-block;
+  width: 12px;
+  text-align: center;
+}
+.savoir-card.open .savoir-chevron {
+  transform: rotate(90deg);
+}
+.savoir-detail {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.35s ease, padding 0.25s;
+  padding: 0 16px;
+  font-size: 13px;
+  line-height: 1.75;
+  color: #3d4f5f;
+  border-top: 0 solid transparent;
+}
+.savoir-card.open .savoir-detail {
+  max-height: 600px;
+  padding: 14px 16px 16px;
+  border-top: 1px solid #dde3ed;
+}
+.savoir-detail strong {
+  color: #24304f;
+  font-weight: 600;
+}
+.savoir-detail em {
+  color: #6b7d8d;
+  font-style: italic;
+}
 .course-block {
   margin: 28px 0;
 }
