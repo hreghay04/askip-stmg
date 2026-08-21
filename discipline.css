@@ -438,6 +438,8 @@
   font-size: 15px;
   line-height: 1.9;
   font-family: 'DM Sans', sans-serif;
+  font-weight: 400;
+  letter-spacing: normal;
   color: #3f555e;
   border-top: 0 solid transparent;
 }
@@ -446,6 +448,8 @@
   font-family: 'DM Sans', sans-serif;
   font-size: 15px;
   line-height: 1.9;
+  font-weight: 400;
+  letter-spacing: normal;
   color: #3f555e;
 }
 .savoir-detail h5 {
