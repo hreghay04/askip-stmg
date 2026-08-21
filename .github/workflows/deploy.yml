@@ -25,7 +25,7 @@ jobs:
 
       - uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 22
 
       - name: Encrypt HTML pages
         run: |
@@ -34,7 +34,7 @@ jobs:
             -d dist \
             --short \
             --remember 30 \
-            --salt '6563-6f67-6573-746c' \
+            --salt '65636f676573746c65636f676573746c' \
             --template-title "EcoGest'Lab" \
             --template-button "Accéder au site" \
             --template-placeholder "Mot de passe" \
