@@ -248,8 +248,8 @@
 .savoirs-intro {
   margin: 8px 0 14px;
   font-family: 'DM Sans', sans-serif;
-  font-size: 14px;
-  line-height: 1.7;
+  font-size: 13px;
+  line-height: 1.65;
   color: #60727a;
 }
 .competence-card {
@@ -268,7 +268,7 @@
   margin: 0 0 7px;
   color: #243b36;
   font-family: Manrope, sans-serif;
-  font-size: 17px;
+  font-size: 14px;
   font-weight: 700;
   line-height: 1.4;
 }
@@ -276,8 +276,8 @@
 .competence-transfer {
   margin: 5px 0;
   color: #52646b;
-  font-size: 14px;
-  line-height: 1.7;
+  font-size: 13px;
+  line-height: 1.65;
 }
 .competence-concepts {
   margin: 12px 0;
@@ -310,14 +310,14 @@
   margin-bottom: 4px;
   color: #2f4a79;
   font-family: Manrope, sans-serif;
-  font-size: 14px;
+  font-size: 13px;
   line-height: 1.45;
 }
 .concept-link p {
   margin: 0 0 6px;
   color: #52646b;
-  font-size: 14px;
-  line-height: 1.75;
+  font-size: 13px;
+  line-height: 1.7;
 }
 .concept-link p:last-child { margin-bottom: 0; }
 .competence-grid {
@@ -344,8 +344,8 @@
 }
 .competence-grid span {
   color: #52646b;
-  font-size: 13px;
-  line-height: 1.6;
+  font-size: 12px;
+  line-height: 1.55;
 }
 .competence-transfer {
   padding-top: 8px;
