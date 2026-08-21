@@ -261,6 +261,9 @@
   border-radius: 9px;
   font-family: 'DM Sans', sans-serif;
 }
+.competence-card strong {
+  font-size: inherit;
+}
 .competence-card h5 {
   margin: 0 0 7px;
   color: #243b36;
