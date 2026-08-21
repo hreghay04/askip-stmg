@@ -1758,10 +1758,6 @@ function competenceConcepts(label, themeIndex, dataKey) {
   return `<div class="competence-concepts"><strong>CONCEPTS À COMPRENDRE</strong><p class="concepts-intro">Avant de réaliser cette compétence, maîtrisez les notions suivantes :</p>${concepts}</div>`;
 }
 
-function savoirPedagogy(label, themeTitle) {
-  return `<div class="savoir-activation"><b>Mobiliser ce savoir</b><span>Dans le thème « ${themeTitle} », demandez-vous : <em>quels faits permettraient de reconnaître ${label.toLowerCase()} ?</em></span><span class="savoir-check">✓ Vérification : donnez une définition, un exemple et une limite sans reprendre le texte mot à mot.</span></div>`;
-}
-
 const key = document.body.dataset.subject,
   program = programs[key];
 const slug = (i) => `chapitre-${i + 1}`;
