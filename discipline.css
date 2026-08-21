@@ -438,8 +438,21 @@
   padding: 0 16px;
   font-size: 15px;
   line-height: 1.9;
-  color: #3d4f5f;
+  font-family: 'DM Sans', sans-serif;
+  color: #3f555e;
   border-top: 0 solid transparent;
+}
+.savoir-detail p {
+  margin: 0 0 14px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 15px;
+  line-height: 1.9;
+  color: #3f555e;
+}
+.savoir-detail h5 {
+  margin: 27px 0 8px;
+  font: 700 17px/1.3 Manrope, sans-serif;
+  color: var(--ink);
 }
 .savoir-card.open .savoir-detail {
   max-height: 600px;
