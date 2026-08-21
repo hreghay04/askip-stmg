@@ -2311,10 +2311,10 @@ if (examData) {
 }
 const expansionStyles = document.createElement('link');
 expansionStyles.rel = 'stylesheet';
-expansionStyles.href = 'course-expansion.css';
+expansionStyles.href = 'course-expansion.css?v=20260821-2';
 document.head.appendChild(expansionStyles);
 const expansionScript = document.createElement('script');
-expansionScript.src = 'course-expansion.js';
+expansionScript.src = 'course-expansion.js?v=20260821-2';
 document.body.appendChild(expansionScript);
 const observer = new IntersectionObserver(
   (entries) =>
