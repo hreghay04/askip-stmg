@@ -240,16 +240,16 @@
   padding-left: 19px;
 }
 .objectives li {
-  font-size: 13px;
-  line-height: 1.65;
+  font-size: 14px;
+  line-height: 1.8;
   color: #52646b;
 }
 .objectives-intro,
 .savoirs-intro {
   margin: 8px 0 14px;
   font-family: 'DM Sans', sans-serif;
-  font-size: 13px;
-  line-height: 1.65;
+  font-size: 14px;
+  line-height: 1.8;
   color: #60727a;
 }
 .competence-card {
@@ -268,7 +268,7 @@
   margin: 0 0 7px;
   color: #243b36;
   font-family: Manrope, sans-serif;
-  font-size: 13px;
+  font-size: 17px;
   font-weight: 700;
   line-height: 1.4;
 }
@@ -276,8 +276,8 @@
 .competence-transfer {
   margin: 5px 0;
   color: #52646b;
-  font-size: 12px;
-  line-height: 1.6;
+  font-size: 14px;
+  line-height: 1.8;
 }
 .competence-concepts {
   margin: 12px 0;
@@ -295,8 +295,8 @@
 .concepts-intro {
   margin: 5px 0 9px;
   color: #60727a;
-  font-size: 12px;
-  line-height: 1.6;
+  font-size: 14px;
+  line-height: 1.8;
 }
 .concept-link {
   margin-top: 8px;
@@ -310,14 +310,14 @@
   margin-bottom: 4px;
   color: #2f4a79;
   font-family: Manrope, sans-serif;
-  font-size: 13px;
+  font-size: 15px;
   line-height: 1.45;
 }
 .concept-link p {
   margin: 0 0 6px;
   color: #52646b;
-  font-size: 12px;
-  line-height: 1.65;
+  font-size: 14px;
+  line-height: 1.8;
 }
 .concept-link p:last-child { margin-bottom: 0; }
 .competence-grid {
@@ -344,8 +344,8 @@
 }
 .competence-grid span {
   color: #52646b;
-  font-size: 11px;
-  line-height: 1.5;
+  font-size: 14px;
+  line-height: 1.8;
 }
 .competence-transfer {
   padding-top: 8px;
@@ -360,8 +360,8 @@
   border-radius: 7px;
   font-family: 'DM Sans', sans-serif;
   color: #405777;
-  font-size: 13px;
-  line-height: 1.65;
+  font-size: 14px;
+  line-height: 1.8;
 }
 .savoir-activation b {
   color: #2f4a79;
