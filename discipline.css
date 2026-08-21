@@ -267,17 +267,14 @@
 .competence-card h5 {
   margin: 0 0 7px;
   color: #243b36;
-  font-family: 'DM Sans', sans-serif;
-  font-size: 13px;
-  font-weight: 600;
-  line-height: 1.6;
+  font: 700 17px/1.3 Manrope, sans-serif;
 }
 .competence-purpose,
 .competence-transfer {
   margin: 5px 0;
   color: #52646b;
-  font-size: 13px;
-  line-height: 1.65;
+  font-size: 15px;
+  line-height: 1.9;
 }
 .competence-concepts {
   margin: 12px 0;
@@ -310,8 +307,7 @@
   margin-bottom: 4px;
   color: #2f4a79;
   font-family: Manrope, sans-serif;
-  font-size: 15px;
-  line-height: 1.45;
+  font: 700 17px/1.3 Manrope, sans-serif;
 }
 .concept-link p {
   margin: 0 0 6px;
@@ -344,8 +340,8 @@
 }
 .competence-grid span {
   color: #52646b;
-  font-size: 12px;
-  line-height: 1.55;
+  font-size: 15px;
+  line-height: 1.9;
 }
 .competence-transfer {
   padding-top: 8px;
