@@ -244,8 +244,7 @@
   line-height: 1.8;
   color: #52646b;
 }
-.objectives-intro,
-.savoirs-intro {
+.objectives-intro {
   margin: 8px 0 14px;
   font-family: 'DM Sans', sans-serif;
   font-size: 14px;
@@ -350,27 +349,6 @@
   padding-top: 8px;
   border-top: 1px dashed #d9e7df;
 }
-.savoir-activation {
-  display: grid;
-  gap: 4px;
-  margin-top: 14px;
-  padding: 11px 12px;
-  background: #eef3fb;
-  border-radius: 7px;
-  font-family: 'DM Sans', sans-serif;
-  color: #405777;
-  font-size: 14px;
-  line-height: 1.8;
-}
-.savoir-activation b {
-  color: #2f4a79;
-  font-size: 10px;
-  letter-spacing: .08em;
-  text-transform: uppercase;
-}
-.savoir-check {
-  color: #52646b;
-}
 @media (max-width: 700px) {
   .competence-grid { grid-template-columns: 1fr; }
 }
@@ -435,27 +413,10 @@
   overflow: hidden;
   transition: max-height 0.35s ease, padding 0.25s;
   padding: 0 16px;
-  font-size: 15px;
-  line-height: 1.9;
-  font-family: 'DM Sans', sans-serif;
-  font-weight: 400;
-  letter-spacing: normal;
-  color: #3f555e;
+  font-size: 13px;
+  line-height: 1.75;
+  color: #3d4f5f;
   border-top: 0 solid transparent;
-}
-.savoir-detail p {
-  margin: 0 0 14px;
-  font-family: 'DM Sans', sans-serif;
-  font-size: 15px;
-  line-height: 1.9;
-  font-weight: 400;
-  letter-spacing: normal;
-  color: #3f555e;
-}
-.savoir-detail h5 {
-  margin: 27px 0 8px;
-  font: 700 17px/1.3 Manrope, sans-serif;
-  color: var(--ink);
 }
 .savoir-card.open .savoir-detail {
   max-height: 600px;

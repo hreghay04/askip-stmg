@@ -2000,26 +2000,6 @@ program.themes.forEach((theme, index) => {
   if (box) {
     box.innerHTML = `<strong>COMPÉTENCES À ACQUÉRIR</strong><p class="objectives-intro">Ces capacités se vérifient dans une situation, pas par récitation. Chaque fiche explicite les concepts, la démarche et la preuve attendue.</p>${source.competences.map(c => competencePedagogy(c, theme[0], key === 'cejm' ? 'BTS' : 'STMG', index, key)).join('')}`;
   }
-  const savoirs = chapter.querySelectorAll('.savoir-card');
-  savoirs.forEach((card, j) => {
-    const detail = card.querySelector('.savoir-detail');
-    const label = source.savoirs[j];
-    if (detail && label) {
-      detail.classList.add('detailed-lesson');
-      [...detail.childNodes].forEach(node => {
-        if (node.nodeType === Node.TEXT_NODE && node.textContent.trim()) {
-          const paragraph = document.createElement('p');
-          paragraph.textContent = node.textContent.trim();
-          node.replaceWith(paragraph);
-        }
-      });
-      detail.insertAdjacentHTML('beforeend', savoirPedagogy(label, theme[0]));
-    }
-  });
-  const heading = chapter.querySelector('.savoirs-section > strong');
-  if (heading) heading.textContent = 'SAVOIRS ASSOCIÉS À MOBILISER';
-  const section = chapter.querySelector('.savoirs-section');
-  if (section && !section.querySelector('.savoirs-intro')) section.insertAdjacentHTML('afterbegin', '<p class="savoirs-intro">Chaque notion comporte un cours, un exemple et une vérification active.</p>');
 });
 const progress = JSON.parse(localStorage.getItem('ecogest-progress') || '{}');
 function getChapterPct(chapterKey) {
