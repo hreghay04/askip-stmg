@@ -1715,7 +1715,7 @@ const savoirsContenu = {
  * l'élève sait ce qu'il doit produire, dans quel ordre et comment vérifier sa
  * réponse. Le contenu reste lié au libellé officiel de chaque compétence.
  */
-function competencePedagogy(label, themeTitle, audienceLabel) {
+function competencePedagogy(label, themeTitle, audienceLabel, themeIndex, dataKey) {
   const verb = (label.match(/^(Identifier|Repérer|Présenter|Analyser|Qualifier|Caractériser|Distinguer|Justifier|Argumenter|Décrire|Proposer|Expliquer|Évaluer|Représenter|Utiliser)/i) || ['Agir'])[0];
   const target = label.replace(/^(Identifier|Repérer|Présenter|Analyser|Qualifier|Caractériser|Distinguer|Justifier|Argumenter|Décrire|Proposer|Expliquer|Évaluer|Représenter|Utiliser)\s+/i, '');
   const methods = {
@@ -1739,7 +1739,23 @@ function competencePedagogy(label, themeTitle, audienceLabel) {
   const proof = /Analyser|Justifier|Argumenter|Évaluer|Proposer/i.test(verb)
     ? 'Réussite : une conclusion répond clairement à la consigne et s’appuie sur au moins deux éléments du contexte.'
     : 'Réussite : la notion est exacte, les critères sont visibles et l’exemple montre qu’elle est comprise.';
-  return `<article class="competence-card"><h5>${label}</h5><p class="competence-purpose"><strong>Attendu :</strong> maîtriser <em>${target}</em> dans le thème « ${themeTitle} ».</p><div class="competence-grid"><div><b>Démarche</b><span>${methods[verb] || methods.Agir}</span></div><div><b>Preuve de maîtrise</b><span>${proof}</span></div><div><b>À éviter</b><span>Réciter le cours sans qualifier les faits, ou conclure sans expliquer le lien avec la situation.</span></div></div><p class="competence-transfer"><strong>Micro-défi ${audienceLabel} :</strong> reformulez la compétence en une question, puis répondez en quatre phrases : notion, indice, mécanisme, conclusion.</p></article>`;
+  return `<article class="competence-card"><h5>${label}</h5><p class="competence-purpose"><strong>Attendu :</strong> maîtriser <em>${target}</em> dans le thème « ${themeTitle} ».</p>${competenceConcepts(label, themeIndex, dataKey)}<div class="competence-grid"><div><b>Démarche</b><span>${methods[verb] || methods.Agir}</span></div><div><b>Preuve de maîtrise</b><span>${proof}</span></div><div><b>À éviter</b><span>Réciter le cours sans qualifier les faits, ou conclure sans expliquer le lien avec la situation.</span></div></div><p class="competence-transfer"><strong>Micro-défi ${audienceLabel} :</strong> reformulez la compétence en une question, puis répondez en quatre phrases : notion, indice, mécanisme, conclusion.</p></article>`;
+}
+
+function competenceConcepts(label, themeIndex, dataKey) {
+  const source = competencesSavoirs[dataKey]?.[themeIndex];
+  const contents = savoirsContenu[dataKey]?.[themeIndex] || [];
+  if (!source || !contents.length) return '';
+  const stop = new Set('les des une une et ou de du la le l un en au aux avec pour dans sur entre par leur leurs aux principaux différentes différents au sein est sont cette cette son sa ses rôle rôles'.split(' '));
+  const words = value => value.toLowerCase().normalize('NFD').replace(/[\\u0300-\\u036f]/g, '').split(/[^a-z0-9]+/).filter(w => w.length > 3 && !stop.has(w));
+  const wanted = new Set(words(label));
+  const ranked = source.savoirs.map((title, i) => ({ title, text: contents[i] || '', score: words(title).filter(w => wanted.has(w)).length })).sort((a, b) => b.score - a.score);
+  const selected = ranked.filter(x => x.score > 0).slice(0, 2);
+  const concepts = (selected.length ? selected : ranked.slice(0, 2)).map(item => {
+    const paragraphs = item.text.match(/<p>[\s\S]*?<\/p>/g)?.slice(0, 2).join('') || item.text;
+    return `<div class="concept-link"><b>${item.title}</b>${paragraphs}</div>`;
+  }).join('');
+  return `<div class="competence-concepts"><strong>CONCEPTS À COMPRENDRE</strong><p class="concepts-intro">Avant de réaliser cette compétence, maîtrisez les notions suivantes :</p>${concepts}</div>`;
 }
 
 function savoirPedagogy(label, themeTitle) {
@@ -1982,7 +1998,7 @@ program.themes.forEach((theme, index) => {
   if (!chapter || !source) return;
   const box = chapter.querySelector('[data-step="comprends"] .objectives');
   if (box) {
-    box.innerHTML = `<strong>COMPÉTENCES À ACQUÉRIR</strong><p class="objectives-intro">Ces capacités se vérifient dans une situation, pas par récitation. Chaque fiche explicite la démarche et la preuve attendue.</p>${source.competences.map(c => competencePedagogy(c, theme[0], key === 'cejm' ? 'BTS' : 'STMG')).join('')}`;
+    box.innerHTML = `<strong>COMPÉTENCES À ACQUÉRIR</strong><p class="objectives-intro">Ces capacités se vérifient dans une situation, pas par récitation. Chaque fiche explicite les concepts, la démarche et la preuve attendue.</p>${source.competences.map(c => competencePedagogy(c, theme[0], key === 'cejm' ? 'BTS' : 'STMG', index, key)).join('')}`;
   }
   const savoirs = chapter.querySelectorAll('.savoir-card');
   savoirs.forEach((card, j) => {

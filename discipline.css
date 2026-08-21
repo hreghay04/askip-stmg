@@ -271,6 +271,43 @@
   font-size: 12.5px;
   line-height: 1.6;
 }
+.competence-concepts {
+  margin: 12px 0;
+  padding: 12px;
+  background: #f0f4fb;
+  border: 1px solid #dce5f3;
+  border-radius: 8px;
+}
+.competence-concepts > strong {
+  color: #405b8c;
+  font-size: 10px;
+  letter-spacing: .08em;
+}
+.concepts-intro {
+  margin: 5px 0 9px;
+  color: #60727a;
+  font-size: 12px;
+}
+.concept-link {
+  margin-top: 8px;
+  padding: 9px 10px;
+  background: #fff;
+  border-left: 2px solid #6e8fbe;
+  border-radius: 5px;
+}
+.concept-link b {
+  display: block;
+  margin-bottom: 4px;
+  color: #2f4a79;
+  font-size: 12px;
+}
+.concept-link p {
+  margin: 0 0 6px;
+  color: #52646b;
+  font-size: 12px;
+  line-height: 1.6;
+}
+.concept-link p:last-child { margin-bottom: 0; }
 .competence-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
