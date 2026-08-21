@@ -2004,7 +2004,17 @@ program.themes.forEach((theme, index) => {
   savoirs.forEach((card, j) => {
     const detail = card.querySelector('.savoir-detail');
     const label = source.savoirs[j];
-    if (detail && label) detail.insertAdjacentHTML('beforeend', savoirPedagogy(label, theme[0]));
+    if (detail && label) {
+      detail.classList.add('detailed-lesson');
+      [...detail.childNodes].forEach(node => {
+        if (node.nodeType === Node.TEXT_NODE && node.textContent.trim()) {
+          const paragraph = document.createElement('p');
+          paragraph.textContent = node.textContent.trim();
+          node.replaceWith(paragraph);
+        }
+      });
+      detail.insertAdjacentHTML('beforeend', savoirPedagogy(label, theme[0]));
+    }
   });
   const heading = chapter.querySelector('.savoirs-section > strong');
   if (heading) heading.textContent = 'SAVOIRS ASSOCIÉS À MOBILISER';
