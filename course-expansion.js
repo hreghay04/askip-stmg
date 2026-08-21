@@ -933,7 +933,7 @@ document.querySelectorAll('.ten-question button').forEach((button) =>
     while (walker.nextNode()) nodes.push(walker.currentNode);
     nodes.forEach(node => {
       const parent = node.parentElement;
-      if (!parent || parent.closest('.term-def, .def-tooltip, button, a, input, textarea, select, summary, h1, h2, h3, h4, h5, h6, .savoir-title, .concept-link > b, .definition-card > strong, .case-documents li > strong, .worked-example > strong, .exam-situation > strong, .exam-consigne > strong, .pack-title, .support-heading, .chapter-title, .activity-label, script, style')) return;
+      if (!parent || parent.closest('.term-def, .def-tooltip, button, a, input, textarea, select, summary, h1, h2, h3, h4, h5, h6, .savoir-title, .concept-link > b, .competence-grid b, .definition-card > strong, .case-documents li > strong, .worked-example > strong, .exam-situation > strong, .exam-consigne > strong, .pack-title, .support-heading, .chapter-title, .activity-label, script, style')) return;
       const sourceText = node.textContent;
       if (!sourceText.trim()) return;
       if (!re.test(sourceText)) return;
