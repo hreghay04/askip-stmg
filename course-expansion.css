@@ -192,6 +192,26 @@
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.18);
 }
 /* ---- term tooltips ---- */
+.glossary-hint {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 12px 0 18px;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.5;
+}
+.glossary-hint span {
+  display: inline-grid;
+  place-items: center;
+  flex: 0 0 20px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--ink);
+  color: #fff;
+  font-weight: 700;
+}
 .term-def {
   border-bottom: 1.5px dashed var(--coral);
   cursor: pointer;
@@ -199,6 +219,12 @@
 }
 .term-def:hover {
   background: rgba(232, 120, 96, 0.08);
+}
+.term-def:focus-visible {
+  outline: 2px solid var(--coral);
+  outline-offset: 2px;
+  border-radius: 2px;
+  background: rgba(232, 120, 96, 0.1);
 }
 .def-tooltip {
   position: fixed;
@@ -228,6 +254,18 @@
   letter-spacing: .5px;
   margin-bottom: 5px;
 }
+.def-tooltip > span {
+  display: block;
+}
+.def-tooltip small {
+  display: block;
+  margin-top: 9px;
+  padding-top: 8px;
+  border-top: 1px solid rgba(255,255,255,.16);
+  color: #b9c4cb;
+  font-size: 10px;
+  line-height: 1.4;
+}
 @media (max-width: 650px) {
   .definitions-list {
     grid-template-columns: 1fr;
@@ -240,5 +278,7 @@
     max-width: calc(100vw - 32px);
     left: 16px !important;
     right: 16px !important;
+    top: auto !important;
+    bottom: 16px;
   }
 }

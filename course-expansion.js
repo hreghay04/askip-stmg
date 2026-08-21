@@ -688,58 +688,132 @@ document.querySelectorAll('.ten-question button').forEach((button) =>
   }),
 );
 (() => {
+  const cleanText = html => {
+    const box = document.createElement('div');
+    box.innerHTML = html || '';
+    return box.textContent.replace(/\s+/g, ' ').trim();
+  };
+  const conciseDefinition = html => {
+    const text = cleanText(html);
+    if (!text) return '';
+    const sentences = text.match(/[^.!?]+[.!?]+/g) || [text];
+    const definition = sentences.slice(0, 2).join(' ').trim();
+    return definition.length > 360 ? `${definition.slice(0, 357).trim()}…` : definition;
+  };
+
+  // Tous les savoirs officiels reçoivent une explication issue de leur propre
+  // contenu pédagogique. Les définitions rédigées à la main restent prioritaires.
+  const subjectSavoirs = competencesSavoirs[key] || [];
+  subjectSavoirs.forEach((theme, themeIndex) => {
+    theme.savoirs.forEach((term, termIndex) => {
+      if (definitionBank[term]) return;
+      const explanation = conciseDefinition(savoirsContenu[key]?.[themeIndex]?.[termIndex]);
+      if (explanation) definitionBank[term] = explanation;
+    });
+  });
+
+  // Les notions mises en évidence dans le cours deviennent elles aussi
+  // explicables. Leur phrase de contexte fournit une définition courte.
+  document.querySelectorAll('.chapter-content strong, .chapter-content b').forEach(mark => {
+    const term = mark.textContent.replace(/\s+/g, ' ').trim();
+    if (!term || term.length < 3 || term.length > 70 || definitionBank[term]) return;
+    if (!/\p{L}/u.test(term) || /^\d/.test(term)) return;
+    if (/^(étape|document|niveau|situation|consigne|corrigé|critères?|conclusion|attendu|démarche|réussite|à éviter|oui|non|exemple|question|réponse|méthode|score)/i.test(term)) return;
+    const context = mark.closest('p, li, .savoir-detail, .concept-link')?.textContent || '';
+    const explanation = conciseDefinition(context);
+    if (explanation && explanation.toLowerCase() !== term.toLowerCase()) definitionBank[term] = explanation;
+  });
+
   const tooltip = document.createElement('div');
   tooltip.className = 'def-tooltip';
+  tooltip.id = 'definitionTooltip';
+  tooltip.setAttribute('role', 'tooltip');
+  tooltip.setAttribute('aria-hidden', 'true');
   document.body.appendChild(tooltip);
+  document.querySelectorAll('.chapter .audience-banner').forEach(banner => {
+    if (!banner.parentElement.querySelector('.glossary-hint')) {
+      banner.insertAdjacentHTML('afterend', '<p class="glossary-hint"><span>?</span> Les termes soulignés sont cliquables : sélectionnez-les pour afficher une explication.</p>');
+    }
+  });
   const terms = Object.keys(definitionBank).sort((a, b) => b.length - a.length);
+  const termLookup = new Map(terms.map(term => [term.toLocaleLowerCase('fr'), term]));
   const escaped = terms.map(t => t.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'));
-  const re = new RegExp(`(${escaped.join('|')})`, 'gi');
-  const containers = document.querySelectorAll(
-    '.course-block p, .worked-example p, .simple-explanation p, .ten-feedback, .quiz-explanation, .analysed-example p, .full-correction p, .exercise-sheet p'
-  );
-  containers.forEach(el => {
-    const walker = document.createTreeWalker(el, NodeFilter.SHOW_TEXT, null);
+  const re = new RegExp(`(?<![\\p{L}\\p{N}])(${escaped.join('|')})(?![\\p{L}\\p{N}])`, 'giu');
+  const seenByBlock = new WeakMap();
+  document.querySelectorAll('.chapter-content, .exam-blanc-content').forEach(root => {
+    const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, null);
     const nodes = [];
     while (walker.nextNode()) nodes.push(walker.currentNode);
     nodes.forEach(node => {
-      if (node.parentElement.closest('.term-def, button, strong, b, h3, h4, h5, .activity-label')) return;
-      const text = node.textContent;
-      if (!re.test(text)) return;
+      const parent = node.parentElement;
+      if (!parent || parent.closest('.term-def, .def-tooltip, button, a, input, textarea, select, summary, .savoir-title, .activity-label, script, style')) return;
+      const sourceText = node.textContent;
+      if (!sourceText.trim()) return;
+      if (!re.test(sourceText)) return;
       re.lastIndex = 0;
+      const block = parent.closest('p, li, .savoir-detail, .competence-card, .ten-feedback, .quiz-explanation') || parent;
+      const seen = seenByBlock.get(block) || new Set();
       const frag = document.createDocumentFragment();
       let last = 0;
       let match;
-      while ((match = re.exec(text)) !== null) {
-        if (match.index > last) frag.appendChild(document.createTextNode(text.slice(last, match.index)));
+      while ((match = re.exec(sourceText)) !== null) {
+        const canonical = termLookup.get(match[1].toLocaleLowerCase('fr')) || match[1];
+        if (seen.has(canonical)) continue;
+        if (match.index > last) frag.appendChild(document.createTextNode(sourceText.slice(last, match.index)));
         const span = document.createElement('span');
         span.className = 'term-def';
-        span.dataset.term = Object.keys(definitionBank).find(k => k.toLowerCase() === match[1].toLowerCase()) || match[1];
+        span.dataset.term = canonical;
         span.textContent = match[1];
+        span.tabIndex = 0;
+        span.setAttribute('role', 'button');
+        span.setAttribute('aria-label', `Définition de ${match[1]}`);
+        span.setAttribute('aria-describedby', tooltip.id);
         frag.appendChild(span);
         last = re.lastIndex;
+        seen.add(canonical);
       }
-      if (last < text.length) frag.appendChild(document.createTextNode(text.slice(last)));
+      if (!last) return;
+      if (last < sourceText.length) frag.appendChild(document.createTextNode(sourceText.slice(last)));
+      seenByBlock.set(block, seen);
       node.parentNode.replaceChild(frag, node);
     });
   });
   let activeTerm = null;
-  document.addEventListener('click', e => {
-    const span = e.target.closest('.term-def');
-    if (!span) { tooltip.classList.remove('visible'); activeTerm = null; return; }
-    e.stopPropagation();
+  const closeTooltip = () => {
+    tooltip.classList.remove('visible');
+    tooltip.setAttribute('aria-hidden', 'true');
+    activeTerm = null;
+  };
+  const openTooltip = span => {
     const term = span.dataset.term;
-    if (activeTerm === span) { tooltip.classList.remove('visible'); activeTerm = null; return; }
+    if (activeTerm === span) { closeTooltip(); return; }
     activeTerm = span;
     const def = definitionBank[term] || '';
-    tooltip.innerHTML = `<strong>${term}</strong>${def}`;
+    tooltip.innerHTML = `<strong>${term}</strong><span>${def}</span><small>Cliquer ailleurs ou appuyer sur Échap pour fermer.</small>`;
+    tooltip.classList.add('visible');
+    tooltip.setAttribute('aria-hidden', 'false');
     const rect = span.getBoundingClientRect();
     let top = rect.bottom + 8;
     let left = rect.left;
     if (left + 340 > window.innerWidth) left = window.innerWidth - 356;
     if (left < 16) left = 16;
-    if (top + 120 > window.innerHeight) top = rect.top - 8 - tooltip.offsetHeight;
+    if (top + tooltip.offsetHeight > window.innerHeight - 16) top = Math.max(16, rect.top - 8 - tooltip.offsetHeight);
     tooltip.style.top = top + 'px';
     tooltip.style.left = left + 'px';
-    tooltip.classList.add('visible');
+  };
+  document.addEventListener('click', e => {
+    const span = e.target.closest('.term-def');
+    if (!span) { closeTooltip(); return; }
+    e.stopPropagation();
+    openTooltip(span);
   });
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') closeTooltip();
+    if ((e.key === 'Enter' || e.key === ' ') && e.target.matches('.term-def')) {
+      e.preventDefault();
+      openTooltip(e.target);
+    }
+  });
+  window.addEventListener('scroll', closeTooltip, { passive: true });
+  window.addEventListener('resize', closeTooltip);
 })();
