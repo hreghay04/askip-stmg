@@ -281,7 +281,7 @@ Object.assign(definitionBank, {
   'Fait juridique':
     'Événement qui produit des effets de droit sans que ceux-ci aient été voulus, comme un accident.',
   'Preuve électronique':
-    'Mode de preuve utilisant des supports numériques (électroniqu, courriels) à condition de garantir intégrité et identification.',
+    'Mode de preuve utilisant des supports numériques (signature électronique, courriels, horodatage), à condition de garantir l’intégrité du document et l’identification de son auteur.',
   Médiation:
     'Mode alternatif de règlement des litiges faisant intervenir un tiers impartial pour aider les parties à trouver un accord.',
   Arbitrage:
@@ -712,19 +712,6 @@ document.querySelectorAll('.ten-question button').forEach((button) =>
     });
   });
 
-  // Les notions mises en évidence dans le cours deviennent elles aussi
-  // explicables. Leur phrase de contexte fournit une définition courte.
-  document.querySelectorAll('.chapter-content strong, .chapter-content b').forEach(mark => {
-    if (mark.closest('h1, h2, h3, h4, h5, h6, .savoir-title, .concept-link > b, .definition-card > strong, .case-documents li > strong, .worked-example > strong, .exam-situation > strong, .exam-consigne > strong, .pack-title, .support-heading, .activity-label, .chapter-title')) return;
-    const term = mark.textContent.replace(/\s+/g, ' ').trim();
-    if (!term || term.length < 3 || term.length > 70 || definitionBank[term]) return;
-    if (!/\p{L}/u.test(term) || /^\d/.test(term)) return;
-    if (/^(étape|document|niveau|situation|consigne|corrigé|critères?|conclusion|attendu|démarche|réussite|à éviter|oui|non|exemple|question|réponse|méthode|score)/i.test(term)) return;
-    const context = mark.closest('p, li, .savoir-detail, .concept-link')?.textContent || '';
-    const explanation = conciseDefinition(context);
-    if (explanation && explanation.toLowerCase() !== term.toLowerCase()) definitionBank[term] = explanation;
-  });
-
   const tooltip = document.createElement('div');
   tooltip.className = 'def-tooltip';
   tooltip.id = 'definitionTooltip';
@@ -753,12 +740,21 @@ document.querySelectorAll('.ten-question button').forEach((button) =>
       if (!re.test(sourceText)) return;
       re.lastIndex = 0;
       const block = parent.closest('p, li, .savoir-detail, .competence-card, .ten-feedback, .quiz-explanation') || parent;
+      const blockText = block.textContent.replace(/\s+/g, ' ').trim();
       const seen = seenByBlock.get(block) || new Set();
       const frag = document.createDocumentFragment();
       let last = 0;
       let match;
       while ((match = re.exec(sourceText)) !== null) {
         const canonical = termLookup.get(match[1].toLocaleLowerCase('fr')) || match[1];
+        const isAcronym = canonical.length >= 2 && canonical === canonical.toLocaleUpperCase('fr');
+        const isExpression = /[\s’'/-]/.test(canonical);
+        const isEmphasized = !!parent.closest('strong, b, em');
+        if (!isExpression && !isAcronym && !isEmphasized) continue;
+        const definitionIndex = blockText.toLocaleLowerCase('fr').indexOf(match[1].toLocaleLowerCase('fr'));
+        const afterTerm = definitionIndex >= 0 ? blockText.slice(definitionIndex + match[1].length).trimStart() : '';
+        const alreadyExplainedHere = definitionIndex >= 0 && definitionIndex < 35 && /^(?:est|sont|désigne|correspond|représente|consiste|se définit|se caractérise|permet|mesure|regroupe|comprend|suppose|vise)\b/i.test(afterTerm);
+        if (alreadyExplainedHere) continue;
         if (seen.has(canonical)) continue;
         if (match.index > last) frag.appendChild(document.createTextNode(sourceText.slice(last, match.index)));
         const span = document.createElement('span');
