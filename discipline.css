@@ -268,7 +268,7 @@
   margin: 0 0 7px;
   color: #243b36;
   font-family: Manrope, sans-serif;
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 700;
   line-height: 1.4;
 }
@@ -276,8 +276,8 @@
 .competence-transfer {
   margin: 5px 0;
   color: #52646b;
-  font-size: 13px;
-  line-height: 1.65;
+  font-size: 12px;
+  line-height: 1.6;
 }
 .competence-concepts {
   margin: 12px 0;
@@ -295,7 +295,7 @@
 .concepts-intro {
   margin: 5px 0 9px;
   color: #60727a;
-  font-size: 13px;
+  font-size: 12px;
   line-height: 1.6;
 }
 .concept-link {
@@ -316,8 +316,8 @@
 .concept-link p {
   margin: 0 0 6px;
   color: #52646b;
-  font-size: 13px;
-  line-height: 1.7;
+  font-size: 12px;
+  line-height: 1.65;
 }
 .concept-link p:last-child { margin-bottom: 0; }
 .competence-grid {
@@ -344,8 +344,8 @@
 }
 .competence-grid span {
   color: #52646b;
-  font-size: 12px;
-  line-height: 1.55;
+  font-size: 11px;
+  line-height: 1.5;
 }
 .competence-transfer {
   padding-top: 8px;
