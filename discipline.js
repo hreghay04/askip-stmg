@@ -1709,6 +1709,43 @@ const savoirsContenu = {
   ],
 };
 
+/*
+ * Les référentiels formulent les compétences avec un verbe d'action. Cette
+ * fonction transforme cette formulation en véritable aide méthodologique :
+ * l'élève sait ce qu'il doit produire, dans quel ordre et comment vérifier sa
+ * réponse. Le contenu reste lié au libellé officiel de chaque compétence.
+ */
+function competencePedagogy(label, themeTitle, audienceLabel) {
+  const verb = (label.match(/^(Identifier|Repérer|Présenter|Analyser|Qualifier|Caractériser|Distinguer|Justifier|Argumenter|Décrire|Proposer|Expliquer|Évaluer|Représenter|Utiliser)/i) || ['Agir'])[0];
+  const target = label.replace(/^(Identifier|Repérer|Présenter|Analyser|Qualifier|Caractériser|Distinguer|Justifier|Argumenter|Décrire|Proposer|Expliquer|Évaluer|Représenter|Utiliser)\s+/i, '');
+  const methods = {
+    Identifier: 'Repérez d’abord les acteurs, les faits et les indices du dossier, puis nommez précisément la notion.',
+    Repérer: 'Soulignez les éléments observables dans le contexte et classez-les avant de tirer une conséquence.',
+    Présenter: 'Définissez la notion, sélectionnez deux caractéristiques essentielles et illustrez-les par le dossier.',
+    Analyser: 'Partez des faits, mobilisez la notion, reliez les causes aux effets et terminez par une conclusion contextualisée.',
+    Qualifier: 'Traduisez les faits dans le vocabulaire disciplinaire, puis justifiez la qualification par un élément précis.',
+    Caractériser: 'Distinguez les critères de la notion, comparez-les à la situation et formulez une conclusion nuancée.',
+    Distinguer: 'Construisez une comparaison : définition, point commun, différence décisive et exemple de chaque notion.',
+    Justifier: 'Avancez une décision, donnez au moins deux arguments et rattachez chacun à une information du contexte.',
+    Argumenter: 'Organisez la réponse en idée, preuve, explication et limite ; évitez la simple opinion.',
+    Décrire: 'Présentez les éléments dans un ordre logique, sans interpréter trop tôt, puis reliez-les au problème posé.',
+    Proposer: 'Formulez une action réaliste, précisez sa mise en œuvre, ses effets attendus et le risque associé.',
+    Expliquer: 'Définissez le mécanisme, déroulez ses étapes avec des connecteurs logiques et donnez un exemple.',
+    Évaluer: 'Choisissez des critères, mesurez les résultats et confrontez les avantages aux limites.',
+    Représenter: 'Sélectionnez les informations utiles, utilisez les conventions de l’outil et vérifiez la cohérence du résultat.',
+    Utiliser: 'Choisissez l’outil adapté, renseignez-le avec les données du dossier et interprétez le résultat obtenu.',
+    Agir: 'Repérez la question, mobilisez une notion et justifiez votre réponse par un élément concret.'
+  };
+  const proof = /Analyser|Justifier|Argumenter|Évaluer|Proposer/i.test(verb)
+    ? 'Réussite : une conclusion répond clairement à la consigne et s’appuie sur au moins deux éléments du contexte.'
+    : 'Réussite : la notion est exacte, les critères sont visibles et l’exemple montre qu’elle est comprise.';
+  return `<article class="competence-card"><h5>${label}</h5><p class="competence-purpose"><strong>Attendu :</strong> maîtriser <em>${target}</em> dans le thème « ${themeTitle} ».</p><div class="competence-grid"><div><b>Démarche</b><span>${methods[verb] || methods.Agir}</span></div><div><b>Preuve de maîtrise</b><span>${proof}</span></div><div><b>À éviter</b><span>Réciter le cours sans qualifier les faits, ou conclure sans expliquer le lien avec la situation.</span></div></div><p class="competence-transfer"><strong>Micro-défi ${audienceLabel} :</strong> reformulez la compétence en une question, puis répondez en quatre phrases : notion, indice, mécanisme, conclusion.</p></article>`;
+}
+
+function savoirPedagogy(label, themeTitle) {
+  return `<div class="savoir-activation"><b>Mobiliser ce savoir</b><span>Dans le thème « ${themeTitle} », demandez-vous : <em>quels faits permettraient de reconnaître ${label.toLowerCase()} ?</em></span><span class="savoir-check">✓ Vérification : donnez une définition, un exemple et une limite sans reprendre le texte mot à mot.</span></div>`;
+}
+
 const key = document.body.dataset.subject,
   program = programs[key];
 const slug = (i) => `chapitre-${i + 1}`;
@@ -1936,6 +1973,27 @@ program.themes.forEach((theme, index) => {
   chapter.querySelector('.chapter-title small').insertAdjacentHTML('beforeend',
     `<span class="difficulty" title="Niveau de difficulté">${[1, 2, 3].map(n => `<i class="${n <= levelDots ? 'on' : ''}"></i>`).join('')}</span>`
   );
+});
+// Remplace la simple liste issue du gabarit par des fiches de compétences
+// pédagogiques, tout en conservant les libellés officiels du référentiel.
+program.themes.forEach((theme, index) => {
+  const chapter = document.querySelector(`#${slug(index)}`);
+  const source = competencesSavoirs[key]?.[index];
+  if (!chapter || !source) return;
+  const box = chapter.querySelector('[data-step="comprends"] .objectives');
+  if (box) {
+    box.innerHTML = `<strong>COMPÉTENCES À ACQUÉRIR</strong><p class="objectives-intro">Ces capacités se vérifient dans une situation, pas par récitation. Chaque fiche explicite la démarche et la preuve attendue.</p>${source.competences.map(c => competencePedagogy(c, theme[0], key === 'cejm' ? 'BTS' : 'STMG')).join('')}`;
+  }
+  const savoirs = chapter.querySelectorAll('.savoir-card');
+  savoirs.forEach((card, j) => {
+    const detail = card.querySelector('.savoir-detail');
+    const label = source.savoirs[j];
+    if (detail && label) detail.insertAdjacentHTML('beforeend', savoirPedagogy(label, theme[0]));
+  });
+  const heading = chapter.querySelector('.savoirs-section > strong');
+  if (heading) heading.textContent = 'SAVOIRS ASSOCIÉS À MOBILISER';
+  const section = chapter.querySelector('.savoirs-section');
+  if (section && !section.querySelector('.savoirs-intro')) section.insertAdjacentHTML('afterbegin', '<p class="savoirs-intro">Chaque notion comporte un cours, un exemple et une vérification active.</p>');
 });
 const progress = JSON.parse(localStorage.getItem('ecogest-progress') || '{}');
 function getChapterPct(chapterKey) {
