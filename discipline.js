@@ -1717,7 +1717,7 @@ const savoirsContenu = {
  */
 function competencePedagogy(label, themeTitle, themeIndex, dataKey) {
   const target = label.replace(/^(Identifier|Repérer|Présenter|Analyser|Qualifier|Caractériser|Distinguer|Justifier|Argumenter|Décrire|Proposer|Expliquer|Évaluer|Représenter|Utiliser)\s+/i, '');
-  return `<article class="competence-card"><h5>${label}</h5><p class="competence-purpose"><strong>Ce que vous devez savoir faire :</strong> ${target.charAt(0).toLowerCase()}${target.slice(1)} dans une situation concrète du thème « ${themeTitle} ».</p>${competenceConcepts(label, themeIndex, dataKey)}</article>`;
+  return `<article class="competence-card"><button class="competence-title" type="button" aria-expanded="false"><span class="competence-chevron">▸</span><span>${label}</span></button><div class="competence-detail"><p class="competence-purpose"><strong>Ce que vous devez savoir faire :</strong> ${target.charAt(0).toLowerCase()}${target.slice(1)} dans une situation concrète du thème « ${themeTitle} ».</p>${competenceConcepts(label, themeIndex, dataKey)}</div></article>`;
 }
 
 function competenceConcepts(label, themeIndex, dataKey) {
@@ -1974,6 +1974,13 @@ program.themes.forEach((theme, index) => {
   if (box) {
     box.innerHTML = `<strong>COMPÉTENCES À ACQUÉRIR</strong><p class="objectives-intro">Chaque fiche explique ce qu’il faut savoir faire et les concepts indispensables pour y parvenir.</p>${source.competences.map(c => competencePedagogy(c, theme[0], index, key)).join('')}`;
   }
+});
+document.querySelectorAll('.competence-title').forEach(title => {
+  title.addEventListener('click', () => {
+    const card = title.closest('.competence-card');
+    const isOpen = card.classList.toggle('open');
+    title.setAttribute('aria-expanded', String(isOpen));
+  });
 });
 const progress = JSON.parse(localStorage.getItem('ecogest-progress') || '{}');
 function getChapterPct(chapterKey) {
@@ -2289,10 +2296,10 @@ if (examData) {
 }
 const expansionStyles = document.createElement('link');
 expansionStyles.rel = 'stylesheet';
-expansionStyles.href = 'course-expansion.css?v=20260822-1';
+expansionStyles.href = 'course-expansion.css?v=20260822-2';
 document.head.appendChild(expansionStyles);
 const expansionScript = document.createElement('script');
-expansionScript.src = 'course-expansion.js?v=20260822-1';
+expansionScript.src = 'course-expansion.js?v=20260822-2';
 document.body.appendChild(expansionScript);
 const observer = new IntersectionObserver(
   (entries) =>
