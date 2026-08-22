@@ -271,8 +271,7 @@
   font-weight: 600;
   line-height: 1.5;
 }
-.competence-purpose,
-.competence-transfer {
+.competence-purpose {
   margin: 5px 0;
   color: #52646b;
   font-size: 13px;
@@ -324,40 +323,6 @@
   line-height: 1.75;
 }
 .concept-link p:last-child { margin-bottom: 0; }
-.competence-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 8px;
-  margin: 12px 0 8px;
-}
-.competence-grid > div {
-  padding: 9px 10px;
-  background: #f5f8f5;
-  border-radius: 7px;
-}
-.competence-grid b,
-.competence-grid span {
-  display: block;
-}
-.competence-grid b {
-  margin-bottom: 4px;
-  color: #477565;
-  font-size: 10px;
-  letter-spacing: .05em;
-  text-transform: uppercase;
-}
-.competence-grid span {
-  color: #52646b;
-  font-size: 13px;
-  line-height: 1.65;
-}
-.competence-transfer {
-  padding-top: 8px;
-  border-top: 1px dashed #d9e7df;
-}
-@media (max-width: 700px) {
-  .competence-grid { grid-template-columns: 1fr; }
-}
 .objectives.savoirs {
   background: #f0f2f8;
 }
